@@ -1,0 +1,25 @@
+<form [formGroup]="form" class="mt-4" method="post" (submit)="onSubmit()">
+    <div class="row">
+        <div class="form-group col-6" [ngClass]="displayFieldCss('inputAmount')">
+            <label for="inputAmount" class="control-label required">Amount</label>
+            <input formControlName="inputAmount" name="nb-amount" (change)="amountChange($event)" id="inputAmount" value="1" min="1" max="10" type="number" class="form-control" aria-describedby="numberHelp" placeholder="Enter Amount" required>
+            <app-field-error-display
+                [isFieldValid]="isFieldValid('inputAmount')"
+                [displayErrorFor]="getInvalidValidators('inputAmount')"
+                [errorMessages]="[
+                    {validator: 'min', message: 'The minimum value is 1'},
+                    {validator: 'max', message: 'The maximum value is 10'},
+                    {validator: 'required', message: 'This field is required!'}
+                ]"
+                [submitted]="formSubmitAttempt"
+            >
+            </app-field-error-display>
+        </div>
+        <div class="form-group col-6">
+            <label for="inputPrice">Total Price</label>
+            <input value="€ {{ totalPrice }}" type="text" class="form-control" id="inputPrice" placeholder="Total price" disabled>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add to shoppingcart</button>
+</form>
