@@ -1,0 +1,11 @@
+{
+  "domain": "softwarefull-testing.eu.auth0.com",
+  "clientId": "fLnutGMWpbuREHJ1PXYGBI9O6Z6g9AN9",
+  "responseType": "token id_token",
+  "apiUri": "https://softwarefullbackend",
+  "appUri": "http://localhost:4200",
+  "errorPath": "/error",
+  "scope": "openid profile read:product",
+  "audience": "https://softwarefullbackend",
+  "redirectUri": "http://localhost:4200/callback"
+}
