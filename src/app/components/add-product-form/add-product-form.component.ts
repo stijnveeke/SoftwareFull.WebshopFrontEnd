@@ -3,7 +3,6 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, NgForm, Validator
 import { ProductOutput } from 'src/app/dto/productOutput';
 import ShoppingcartService from '../../services/shoppingcart.service';
 import {ProductLine} from '../../dto/product-line';
-import {AuthService} from "@auth0/auth0-angular";
 
 @Component({
   selector: 'app-add-product-form',
@@ -39,7 +38,7 @@ export class AddProductFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.totalPrice = parseInt(this.product.price.toString()).toFixed(2);
+    this.totalPrice = parseInt(this.product.price.toString(), 10).toFixed(2);
 
     this.form = this.formBuidler.group({
       inputAmount: [null, [Validators.required, this.minValidation(1), this.maxValidation(10)]]
@@ -47,8 +46,8 @@ export class AddProductFormComponent implements OnInit {
   }
 
   amountChange(event: Event) {
-    const amount: number = parseInt((event.target as HTMLInputElement).value);
-    this.totalPrice = parseInt((amount * this.product.price).toString()).toFixed(2);
+    const amount: number = parseInt((event.target as HTMLInputElement).value, 10);
+    this.totalPrice = parseInt((amount * this.product.price).toString(), 10).toFixed(2);
   }
 
   isFieldValid(field: string) {
