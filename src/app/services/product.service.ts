@@ -10,7 +10,7 @@ export class ProductService {
 
   getAllProducts()
   {
-    return this.authHttp.get('https://localhost:5021/api/Product');
+    return this.authHttp.get('https://softwarefullproductcomponent.azurewebsites.net/api/Product');
     // await this.authHttp.get<ProductOutput[]>('https://localhost:44366/api/Products').subscribe((products) => {
     //   console.log(products);
     //   productList = products as ProductOutput[];
@@ -19,6 +19,6 @@ export class ProductService {
 
   getProduct(productSlugFromRoute: string)
   {
-    return this.authHttp.get('https://localhost:5021/api/Product/' + productSlugFromRoute).toPromise();
+    return this.authHttp.get('https://softwarefullproductcomponent.azurewebsites.net/api/Product/' + productSlugFromRoute).toPromise();
   }
 }
