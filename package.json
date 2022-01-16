@@ -2,6 +2,8 @@
   "name": "login-demo",
   "version": "0.0.0",
   "scripts": {
+    "build:prod": "ng build --prod",
+    "test:prod": "ng test --browsers=ChromeHeadless --watch=false --code-coverage",
     "docker-start": "docker build -t webshop . && docker run -p 4200:443 --name Webshop webshop",
     "ng": "ng",
     "start": "ng serve",
