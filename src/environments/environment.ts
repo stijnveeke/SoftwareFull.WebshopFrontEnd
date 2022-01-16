@@ -1,8 +1,7 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
-import config from '../../auth_config.json';
-import createAuth0Client from '@auth0/auth0-spa-js';
+import config from 'auth_config.json';
 
 const { domain, clientId, audience, apiUri, errorPath, scope } = config as {
   domain: string;
