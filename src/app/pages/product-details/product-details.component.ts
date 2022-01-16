@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
 import { ProductOutput } from 'src/app/dto/productOutput';
 import { ProductService } from '../../services/product.service';
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-product-details',
@@ -18,9 +19,8 @@ export class ProductDetailsComponent implements OnInit {
     const routeParams = this.route.snapshot.paramMap;
     const productSlugFromRoute = String(routeParams.get('productSlug'));
 
-    const prod: ProductOutput = await this.productService.getProduct(productSlugFromRoute);
-    console.log('test');
-    console.log(prod);
-    this.product = prod;
+    const prod: Promise<any> = this.productService.getProduct(productSlugFromRoute);
+    this.product = await prod;
+    // this.product = prod;
   }
 }

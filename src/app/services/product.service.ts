@@ -19,8 +19,6 @@ export class ProductService {
 
   getProduct(productSlugFromRoute: string)
   {
-    console.log("Get all products");
-    this.authHttp.get('https://localhost:44366/api/Products').subscribe((data) => console.log(data), (err) => console.log(err));
-    return new ProductOutput();
+    return this.authHttp.get('https://localhost:5021/api/Product/' + productSlugFromRoute).toPromise();
   }
 }

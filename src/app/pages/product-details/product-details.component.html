@@ -1,9 +1,8 @@
 <div class="container" *ngIf="auth.isLoading$ | async; else loaded">
     <app-loading></app-loading>
   </div>
-  
+
   <ng-template #loaded>
     <!-- <app-hero></app-hero> -->
     <app-product-details-content [product]="product"></app-product-details-content>
   </ng-template>
-  
