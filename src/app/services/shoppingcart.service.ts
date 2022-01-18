@@ -5,7 +5,7 @@ import { ProductLine } from '../dto/product-line';
 import { ProductOutput } from '../dto/productOutput';
 import { Shoppingcart } from '../dto/shoppingcart';
 import {HttpClient} from '@angular/common/http';
-import {AuthService} from "@auth0/auth0-angular";
+import { AuthService } from './AuthService';
 
 @Injectable({
   providedIn: 'root'
@@ -70,15 +70,20 @@ export default class ShoppingcartService {
   // }
 
   OrderFromShoppingcart = async (productLine: ProductLine): Promise<void> => {
-    console.log(this.auth.user$);
-    this.http.post('https://localhost:44322/api/Order/submit/' + productLine.product.productSlug, {
-      customerSub: 'blablabla',
-      email: 'st.van.eekelen@gmail.com'
-    }).forEach(value => {
-      console.log(value);
-    }).catch(event => {
-      console.error(event);
+    this.auth.getProfile((err, profile) => {
+      console.log(profile);
+      console.error(err);
+      this.http.post('https://softwarefulllicensecomponent.azurewebsites.net/api/License', {
+          productSlug: productLine.product.productSlug,
+          userIdentifier: profile.sub,
+          amount: productLine.amount
+        }).forEach(value => {
+          console.log(value);
+        }).catch(event => {
+          console.error(event);
+        });
+      console.log('Form send!');
     });
-    console.log('Form send!');
+
   }
 }

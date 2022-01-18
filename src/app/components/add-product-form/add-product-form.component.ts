@@ -72,6 +72,7 @@ export class AddProductFormComponent implements OnInit {
     };
   }
   onSubmit() {
+
     this.formSubmitAttempt = true;
     if (this.form.valid) {
       console.log('form submitted');
